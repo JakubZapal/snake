@@ -5,7 +5,7 @@ const x = 50;
 const y = 50;
 const size = 10;
 const currentPosition = [x, y];
-let suggestedPoint = []
+let foodCoords = []
 let snakeLength = 3;
 let snakeBody = [];
 
@@ -140,17 +140,17 @@ function down(){
 }
 
 function makeFoodItem(){
-    suggestedPoint = [Math.floor(Math.random()*(canvas.width/size))*size, Math.floor(Math.random()*(canvas.height/size))*size];
+    foodCoords = [Math.floor(Math.random()*(canvas.width/size))*size, Math.floor(Math.random()*(canvas.height/size))*size];
     if (snakeBody.some(hasPoint)) {
         makeFoodItem();
     } else {
         ctx.fillStyle = "rgb(10,100,0)";
-        ctx.fillRect(suggestedPoint[0], suggestedPoint[1], size, size);
+        ctx.fillRect(foodCoords[0], foodCoords[1], size, size);
     };
 }
   
 function hasPoint(element, index, array) {
-    return (element[0] == suggestedPoint[0] && element[1] == suggestedPoint[1]);
+    return (element[0] == foodCoords[0] && element[1] == foodCoords[1]);
 }
 
 function gameOver() {
@@ -158,7 +158,6 @@ function gameOver() {
     clearInterval(a);
     snakeBody = [];
     snakeLength = 3;
-    allowPressKeys = false;
     if(confirm("koniec gry lol, twoj wynik: " + score)) {
         location.reload();
     }
