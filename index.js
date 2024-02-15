@@ -17,28 +17,24 @@ document.addEventListener("keydown", (e) => {
         case 'KeyW':
             if (direction != 'down') {
                 direction = 'up'
-                moveUp()
             }
             break;
 
         case 'KeyS':
             if (direction != 'up') {
                 direction = 'down'
-                moveDown()
             }
             break;
             
         case 'KeyA':
             if (direction != 'right'){
                 direction = 'left'
-                moveLeft()
             }
             break;
 
         case 'KeyD':
             if (direction != 'left'){
                 direction = 'right'
-                moveRight()
             }
             break;
     }
