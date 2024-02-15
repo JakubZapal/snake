@@ -55,7 +55,7 @@ function draw() {
         const itemToRemove = snakeBody.shift();
         ctx.clearRect(itemToRemove[0], itemToRemove[1], size, size);
     }
-    if (currentPosition[0] == foodCords[0] && currentPosition[1] == foodCords[1]) {
+    if (currentPosition[0] == foodCoords[0] && currentPosition[1] == foodCoords[1]) {
         makeFoodItem();
         snakeLength++;
     }
