@@ -10,8 +10,7 @@ let snakeLength = 3;
 let snakeBody = [];
 
 makeFoodItem();
-// MainLoop.setDraw(move).start();
-a = setInterval(move,100);
+MainLoop.setMaxAllowedFPS(30).setDraw(move).start();
 
 document.addEventListener("keydown", (e) => {
     switch (e.code) {
@@ -21,6 +20,7 @@ document.addEventListener("keydown", (e) => {
                 moveUp()
             }
             break;
+
         case 'KeyS':
             if (direction != 'up') {
                 direction = 'down'
@@ -34,6 +34,7 @@ document.addEventListener("keydown", (e) => {
                 moveLeft()
             }
             break;
+
         case 'KeyD':
             if (direction != 'left'){
                 direction = 'right'
@@ -46,7 +47,7 @@ document.addEventListener("keydown", (e) => {
 function draw() {
     if (snakeBody.some(hasEatenItself)) {
         gameOver();
-        return false;
+        return;
     }
     snakeBody.push([currentPosition[0], currentPosition[1]]);
     ctx.fillStyle = "rgb(200,0,0)";
@@ -155,7 +156,7 @@ function hasPoint(element, index, array) {
 
 function gameOver() {
     const score = snakeLength - 3;
-    clearInterval(a);
+    MainLoop.stop();
     snakeBody = [];
     snakeLength = 3;
     if(confirm("koniec gry lol, twoj wynik: " + score)) {
